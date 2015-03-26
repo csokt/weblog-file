@@ -15,5 +15,14 @@
     "log"
   ],
   "author": "csokt",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "autobahn": "^0.9.6",
+    "fs-tail": "0.0.4",
+    "glob": "^5.0.3",
+    "ip": "^0.3.2",
+    "lodash": "^3.6.0",
+    "split": "^0.3.3",
+    "when": "^3.7.2"
+  }
 }
