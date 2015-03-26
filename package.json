@@ -1,0 +1,19 @@
+{
+  "name": "weblog-file",
+  "version": "0.0.0",
+  "description": "weblog file module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/csokt/weblog-file.git"
+  },
+  "keywords": [
+    "file",
+    "log"
+  ],
+  "author": "csokt",
+  "license": "MIT"
+}
