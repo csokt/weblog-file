@@ -85,8 +85,8 @@ var weblogFile = function(setup, line2arr) {
   var autobahn = require("autobahn")
 
   var connection = new autobahn.Connection({
-    url: process.argv[2], // "ws://127.0.0.1:8080/ws",
-    realm: process.argv[3] // "weblog"
+    url: process.argv[2] || "ws://127.0.0.1:8080/ws",
+    realm: process.argv[3] || "weblog"
   })
 
   connection.onopen = function (session) {
