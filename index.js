@@ -65,7 +65,7 @@ var weblogFile = function(setup) {
       var comment  = setup.comment || /(?!x)x/
       var res = [], counter = 0, i = 0, start = false, stop = false
       var d = when.defer()
-      var startline = controls.offset >= 0 ? controls.offset : linecount + controls.offset
+      var startline = controls.offset >= 0 ? controls.offset : linecount + controls.offset + 1
       var st1 = fs.createReadStream(file)
       var st2 = /\.gz$/.test(file) ? st1.pipe(zlib.createGunzip()) : st1
       st2.setEncoding('utf8')
