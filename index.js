@@ -10,13 +10,23 @@ var weblogFile = function(setup) {
   var fs = require('fs')
   var glob = require('glob')
   var split = require('split')
-  var FsTail = require('fs-tail')
+  var Tail = require('tail').Tail
   var autobahn = require('autobahn')
 
   var files = glob.sync(setup.pattern)
   setup.headers = _.map(files, function(file) {
     return { file: file, header: setup.header }
   })
+
+  var linecount = 0, count = 0, i
+  require('fs').createReadStream(files[0])
+    .on('data', function(chunk) {
+      for (i=0; i < chunk.length; ++i)
+        if (chunk[i] == 10) count++
+    })
+    .on('end', function() {
+      linecount = count
+    })
 
   var filesize = 0
   setInterval(function () {
@@ -31,16 +41,16 @@ var weblogFile = function(setup) {
     realm: process.argv[3] || 'weblog'
   })
 
-  var linecount = 0
   var main = function(session) {
-    var publish2topic = false
-    var tail = FsTail(files[0], { start: 0, EOFAfter: 100 })
-    tail.on('EOF', function() { publish2topic = true })
-    tail.pipe(split())
-      .on('data', function (line) {
-        linecount++
-        if (publish2topic) session.publish(setup.topic, setup.line2arr(linecount, line))
-      })
+
+    var tail = new Tail(files[0])
+    tail.on('line', function(line) {
+      linecount++
+      session.publish(setup.topic, setup.line2arr(linecount, line))
+    })
+    tail.on('error', function() {
+      process.exit(8)
+    })
 
     session.subscribe('discover', function() {
       session.publish('announce', [_.pick(setup, 'domain', 'host', 'service', 'topic')])

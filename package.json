@@ -1,6 +1,6 @@
 {
   "name": "weblog-file",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "weblog file module",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,11 @@
   "license": "MIT",
   "dependencies": {
     "autobahn": "^0.9.6",
-    "fs-tail": "0.0.4",
-    "glob": "^5.0.3",
+    "glob": "^5.0.5",
     "ip": "^0.3.2",
     "lodash": "^3.6.0",
     "split": "^0.3.3",
+    "tail": "^0.4.0",
     "when": "^3.7.2"
   }
 }
