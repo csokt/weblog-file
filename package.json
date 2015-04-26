@@ -1,6 +1,6 @@
 {
   "name": "weblog-file",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "weblog file module",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "autobahn": "^0.9.6",
     "glob": "^5.0.5",
     "ip": "^0.3.2",
-    "lodash": "^3.6.0",
+    "lodash": "^3.7.0",
     "split": "^0.3.3",
     "tail": "^0.4.0",
     "when": "^3.7.2"
